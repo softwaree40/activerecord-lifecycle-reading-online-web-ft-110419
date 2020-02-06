@@ -16,13 +16,16 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
+      #binding.pry
       render :new
     end
 	end
 
 	def update
-	  @post = Post.find(params[:id])
+	   
+	   @post = Post.find(params[:id])
 	  @post.update(params.require(:post).permit(:title, :description, :post_status, :author_id))
+	  #binding.pry
 	  redirect_to post_path(@post)
 	end
 
